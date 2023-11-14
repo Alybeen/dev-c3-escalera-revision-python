@@ -5,7 +5,7 @@ if len(listing) > 0:
     print("le chiffre maximum est :", listing[len(listing) - 1])
     res = 0
     for i in listing:
-        res += int(i)
+        res += i
     print("la moyenne est : ", res / len(listing))
 else:
     print("pas de nombres")
