@@ -11,19 +11,18 @@ def is_number(arg):
 
 
 def sort_by_insertion(numbers: list):
-    if len(numbers) == 0:
-        return 'liste vide'
+    not_number_list = re.search(r'\d', ''.join(str(e) for e in numbers))
+    if len(numbers) == 0 or not_number_list is None:
+        return 'cette liste est vide ou n\'est pas une liste de nombres'
     else:
         is_number_list = list(filter(lambda x: is_number(x), numbers))
-        if is_number_list:
-            for i in range(len(is_number_list)):
-                x = int(is_number_list[i])
-                j = i
-                while j > 0 and int(is_number_list[j - 1]) > x:
-                    is_number_list[j] = int(is_number_list[j - 1])
-                    j = j - 1
-                is_number_list[j] = x
-            return is_number_list
-        return 'il n\'y pas de nombres dans cette liste'
+        for i in range(len(is_number_list)):
+            x = int(is_number_list[i])
+            j = i
+            while j > 0 and int(is_number_list[j - 1]) > x:
+                is_number_list[j] = int(is_number_list[j - 1])
+                j = j - 1
+            is_number_list[j] = x
+        return is_number_list
 
 print(sort_by_insertion(["p"]))
