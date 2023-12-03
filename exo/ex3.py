@@ -1,21 +1,22 @@
 import re
 
 
-def multiply(A, B):
+def multiply(A:int, B:int):
     return str(A * B)
 
 
-def divide(A, B):
+def divide(A:int, B:int):
     return str(A/B)
 
-def addition(A, B):
+def addition(A:int, B:int):
     return str(A+B)
 
-def soustraction(A,B):
+def soustraction(A:int,B:int):
     return str(A-B)
 
-# function for priority calcul if it has
+# recursive function for priority calcul if it has
 def calcul_priority(input:str):
+    #find a priority calcul
     has_priority = re.search("\d*[Xx/]\d*", input)
     if has_priority:
         numbers = re.split('[Xx/]', has_priority.group(0))
@@ -39,7 +40,7 @@ def calcul_priority(input:str):
     else:
         return input
 
-#function for other calcul
+#recursive function for other calcul than mutliply or divide
 def calcul(input:str):
     cal = re.search("\d*(?:\+|\-)\d*", input)
     if cal:
@@ -60,7 +61,6 @@ def calcul(input:str):
 
 
 #start to calculate
-
 is_valid = False
 while not is_valid:
     operation = input("Entrez une opération :")
