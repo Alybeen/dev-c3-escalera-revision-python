@@ -64,6 +64,7 @@ def calcul(input:str):
 is_valid = False
 while not is_valid:
     operation = input("Entrez une opération :")
+    # todo : check comma etc.
     if operation:
         is_valid = True
         priorityResult=None
@@ -81,7 +82,11 @@ while not is_valid:
         if priorityResult is not None:
             try:
                 print(f'{calcul(priorityResult)}')
-            except:
-                operation = input("Entrez une opération :")
+            except ValueError as e:
+                print(e)
+                is_valid = False
+            except TypeError as e:
+                print(e)
+                is_valid = False
     else:
         operation = input("Entrez une opération :")
